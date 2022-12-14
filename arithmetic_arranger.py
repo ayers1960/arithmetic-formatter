@@ -45,20 +45,28 @@ def arithmetic_arranger( input, showResults=False ) :
 
 	answer = ""
 	for (i,p) in enumerate(probs):
-		answer += p[0].rjust(widths[i]+2)+pad
+		if i > 0:
+			answer += pad
+		answer += p[0].rjust(widths[i]+2)
 	answer += "\n"
 
 	for (i,p) in enumerate(probs):
-		answer += p[1] + " " + p[2].rjust(widths[i]) + pad
+		if i > 0:
+			answer += pad
+		answer += p[1] + " " + p[2].rjust(widths[i])
 	answer += "\n"
 
 	for (i,p) in enumerate(probs):
-		answer += '-'*(widths[i]+2) +pad
+		if i > 0:
+			answer += pad
+		answer += '-'*(widths[i]+2)
 	answer += "\n"
 
 	if showResults:
 		for (i,p) in enumerate(probs):
-			answer += str(results[i]).rjust(widths[i]+2) + pad
+			if i > 0:
+				answer += pad
+			answer += str(results[i]).rjust(widths[i]+2)
 		answer += "\n"
 
 	return answer
