@@ -60,14 +60,13 @@ def arithmetic_arranger( input, showResults=False ) :
 		if i > 0:
 			answer += pad
 		answer += '-'*(widths[i]+2)
-	answer += "\n"
 
 	if showResults:
+		answer += "\n"
 		for (i,p) in enumerate(probs):
 			if i > 0:
 				answer += pad
 			answer += str(results[i]).rjust(widths[i]+2)
-		answer += "\n"
 
 	return answer
 
