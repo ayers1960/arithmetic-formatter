@@ -30,12 +30,11 @@ class Rectangle:
     return retStr
 
   def get_amount_inside(self, box):
-    print( f"  I am {self.width} x {self.height}")
-    print( f"box is {box.width} x {box.height}")
-    amount = min(self.width//box.width, self.height//box.height)
-    print( f"amount is {amount}")
-    return amount
-
+    areaBox = box.get_area()
+    areaSelf = self.get_area()
+    cnt = areaSelf//areaBox
+    ##print(f"self:{areaSelf}  box:{areaBox}  cnt: {cnt}")
+    return cnt
 
 
 class Square(Rectangle):
