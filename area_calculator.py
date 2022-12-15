@@ -27,11 +27,14 @@ class Rectangle:
     retStr = "";
     for i in range(0,self.height):
       retStr += "*"*self.width + "\n"
-    print(retStr)
     return retStr
 
   def get_amount_inside(self, box):
-    pass
+    print( f"  I am {self.width} x {self.height}")
+    print( f"box is {box.width} x {box.height}")
+    amount = min(self.width//box.width, self.height//box.height)
+    print( f"amount is {amount}")
+    return amount
 
 
 
