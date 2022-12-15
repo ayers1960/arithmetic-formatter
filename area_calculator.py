@@ -19,9 +19,15 @@ class Rectangle:
     return (self.width**2 + self.height**2)** 0.5
 
   def get_picture(self):
-    pass
+    if self.width > 50 or self.height > 50:
+      return "Too big for picture."
+    retStr = "";
+    for i in range(0,self.height):
+      retStr += "*"*self.width + "\n"
+    print(retStr)
+    return retStr
 
-  def get_amount_inside(self):
+  def get_amount_inside(self, box):
     pass
 
 
