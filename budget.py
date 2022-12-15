@@ -86,15 +86,15 @@ def create_spend_chart(categories):
   for C in categories:
     retStr += "-"*3
     maxName = max(maxName, len(C.category))
-  retStr += "-\n"
+  retStr += "-"
   for i in range(0,maxName):
-    retStr += "   "
+    retStr += "\n"
+    retStr += "    "
     for C in categories:
       if i < len(C.category):
-        retStr += f"  {C.category[i:i+1]}"
+        retStr += f" {C.category[i:i+1]} "
       else:
         retStr += f"   "
-    retStr += "\n"
-
+    retStr += " "
   print(retStr)
   return retStr
