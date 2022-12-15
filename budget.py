@@ -54,7 +54,47 @@ class Category:
     balance = self.get_balance()
     return (amount <= balance)
 
+  def amountSpent(self):
+    spent = 0.0;
+    for r in self.ledger:
+      if r['amount'] < 0:
+        spent += -1 * r['amount']     
+    return round(spent,2)
 
 
 def create_spend_chart(categories):
-  pass
+  totalSpent = 0.0;
+  for C in categories:
+    spent = C.amountSpent()
+    totalSpent = round(totalSpent + spent,2)
+
+  for C in categories:
+    spent = C.amountSpent()
+    C.percentSpent = 100.0*spent/totalSpent 
+
+  retStr = "Percentage spent by category\n";
+  for i in range(100,-10,-10):
+    retStr += f"{i:3d}|"
+    for C in categories:
+      if C.percentSpent >= i:
+        retStr += " o "
+      else:
+        retStr += "   "        
+    retStr += " \n"
+  retStr += "    "
+  maxName = 0
+  for C in categories:
+    retStr += "-"*3
+    maxName = max(maxName, len(C.category))
+  retStr += "-\n"
+  for i in range(0,maxName):
+    retStr += "   "
+    for C in categories:
+      if i < len(C.category):
+        retStr += f"  {C.category[i:i+1]}"
+      else:
+        retStr += f"   "
+    retStr += "\n"
+
+  print(retStr)
+  return retStr
