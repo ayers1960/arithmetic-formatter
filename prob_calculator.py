@@ -14,13 +14,15 @@ class Hat:
     #print(self.contents)
 
   def draw(self,numberOfBalls):
+    if len(self.contents) < numberOfBalls:
+      return self.contents
     drawn = []
     r = numberOfBalls
     for i in range(0,r):
       if len(self.contents) < 1:
         break;
-      n = math.floor(random.random()*len(self.contents))
-      ##n = random.randint(0,len(self.contents)-1)
+      ##n = math.floor(random.random()*len(self.contents))
+      n = random.randint(0,len(self.contents)-1)
       drawn.append(self.contents[n])
       del self.contents[n]   
 
